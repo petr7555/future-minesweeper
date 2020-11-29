@@ -1,6 +1,18 @@
 def main():
     rows, columns, mines = get_user_input()
-    print(rows, columns, mines)
+    print(f"Game, W: {columns}, H: {rows}, Mines {mines}")
+    field = generate_field(rows, columns, mines)
+    print_field(field)
+
+
+def generate_field(rows, columns, mines):
+    field = [[" " for _ in range(columns)] for _ in range(rows)]
+    return field
+
+
+def print_field(field):
+    for row in field:
+        print("|".join(["", *row, ""]))
 
 
 def get_rows_input():
@@ -37,6 +49,7 @@ def get_mines_input(rows, columns):
             continue
         mines = int(mines)
         if mines > rows * columns:
+            # TODO has to work for ANY positive integer parameters?
             print("Too many mines! They don't even fit into the field!")
         else:
             return mines
