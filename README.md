@@ -38,3 +38,17 @@ guess an empty cell.
     
 4. I displayed the board by printing the values of cells into the console separated by pipes.
 
+### Output example:
+```
+Game, W: 15, H: 10, Mines 30
+| | | | | |1|2|x|2|x|1|2|x|x|2|
+|1|1| |1|1|2|x|2|2|1|1|2|x|x|2|
+|x|1|1|2|x|4|3|2| |1|1|2|3|3|2|
+|1|1|1|x|3|x|x|2|1|2|x|1|2|x|3|
+| | |1|1|2|2|3|3|x|2|1|2|3|x|x|
+| | |1|1|1| |1|x|2|1| |1|x|4|3|
+|1|2|3|x|2|1|1|1|1|1|1|2|1|2|x|
+|1|x|x|3|x|2|1|1|1|2|x|1| |1|1|
+|1|3|3|3|1|2|x|1|2|x|4|2|1| | |
+| |1|x|1| |1|1|1|2|x|3|x|1| | |
+```
