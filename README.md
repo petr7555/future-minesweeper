@@ -1,3 +1,6 @@
+## How to run this?
+Run `python main.py` in the root directory.
+
 ### Choosing the right technology
 Because the visualisation could be as simple as needed, I chose to create a console application.
 Python is great for this purpose. It is fast to write, easy to read and I am very familiar with it.
