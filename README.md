@@ -1,8 +1,8 @@
-### Choosing the right "technology"
+### Choosing the right technology
 Because the visualisation could be as simple as needed, I chose to create a console application.
 Python is great for this purpose. It is fast to write, easy to read and I am very familiar with it.
 
-###The problem consists of the following parts:
+### The problem consists of the following parts:
 1. Getting necessary input parameters from the user
 2. Placing mines on the board
 3. Placing clues on the board
