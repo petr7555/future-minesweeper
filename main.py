@@ -1,3 +1,6 @@
+import random
+
+
 def main():
     rows, columns, mines = get_user_input()
     print(f"Game, W: {columns}, H: {rows}, Mines {mines}")
@@ -7,6 +10,18 @@ def main():
 
 def generate_field(rows, columns, mines):
     field = [[" " for _ in range(columns)] for _ in range(rows)]
+    field = place_mines(field, rows, columns, mines)
+
+    return field
+
+
+def place_mines(field, rows, columns, mines):
+    while mines > 0:
+        row = random.randint(0, rows - 1)  # inclusive range
+        col = random.randint(0, columns - 1)  # inclusive range
+        if field[row][col] != "x":
+            field[row][col] = "x"
+            mines -= 1
     return field
 
 
