@@ -29,9 +29,10 @@ mine already.
 This approach is slow when the field is large and the mines are placed densely as the random function needs to 
 guess an empty cell.
 
-    In the interview the following (better) strategies emerged:
+    In the interview the following alternative strategies emerged:
+    2. Create a set of possible coordinates for mines and pick from this set at random.
     3. Generate all mines at the beginning of the field and shuffle the field.
-    4. Create a set of possible coordinates for mines and pick from this set at random.
+    4. For each field, place the mine with probability of mines_left/remaining_fields.
 
 3. Two algorithms to solve placement of clues came to my mind:
     1. Place clues when placing mines. After a mine is placed, it's adjacent cells' values would be incremented by one
@@ -43,7 +44,7 @@ guess an empty cell.
     Considering performance, the first algorithm is in O(n) where n is the number of mines.
     The second is in O(n) where n is the number of cells.
     
-    If solved with the second algorithm, the problem is embarrassingly parallel. We can split the field into subsections
+    If solved with the second algorithm, the problem is embarrassingly parallel (map reduce). We can split the field into subsections
     and generate clues for each section on its own CPU. 
     Using the first option, this would require locks on the cells.
         

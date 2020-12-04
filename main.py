@@ -17,8 +17,8 @@ def generate_field(rows, columns, mines):
 
 def place_mines(field, rows, columns, mines):
     while mines > 0:
-        row = random.randint(0, rows - 1)  # inclusive range
-        col = random.randint(0, columns - 1)  # inclusive range
+        row = random.randint(0, rows - 1)  # randint is inclusive
+        col = random.randint(0, columns - 1)
         if field[row][col] != "x":
             field[row][col] = "x"
             mines -= 1
@@ -66,7 +66,6 @@ def get_input(config):
 
 
 class Config:
-
     def __init__(self, name, constraints):
         """
         name is the name of the input
