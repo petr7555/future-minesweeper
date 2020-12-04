@@ -29,6 +29,10 @@ mine already.
 This approach is slow when the field is large and the mines are placed densely as the random function needs to 
 guess an empty cell.
 
+    In the interview the following (better) strategies emerged:
+    3. Generate all mines at the beginning of the field and shuffle the field.
+    4. Create a set of possible coordinates for mines and pick from this set at random.
+
 3. Two algorithms to solve placement of clues came to my mind:
     1. Place clues when placing mines. After a mine is placed, it's adjacent cells' values would be incremented by one
     if there wasn't other mine. 
@@ -38,7 +42,7 @@ guess an empty cell.
     I chose the second algorithm because it seems more intuitive and readable to me.
     Considering performance, the first algorithm is in O(n) where n is the number of mines.
     The second is in O(n) where n is the number of cells.
-    
+        
 4. I displayed the board by printing the values of cells into the console separated by pipes.
 
 ### Output example:
