@@ -42,6 +42,10 @@ guess an empty cell.
     I chose the second algorithm because it seems more intuitive and readable to me.
     Considering performance, the first algorithm is in O(n) where n is the number of mines.
     The second is in O(n) where n is the number of cells.
+    
+    If solved with the second algorithm, the problem is embarrassingly parallel. We can split the field into subsections
+    and generate clues for each section on its own CPU. 
+    Using the first option, this would require locks on the cells.
         
 4. I displayed the board by printing the values of cells into the console separated by pipes.
 
