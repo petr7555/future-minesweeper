@@ -50,50 +50,41 @@ def print_field(field):
         print("|".join(["", *row, ""]))
 
 
-def get_rows_input():
+def get_input(config):
     while True:
-        rows = input("Enter number of rows: ")
-        if not rows.isnumeric():
+        input_val = input(f"Enter number of {config.name}: ")
+        if not input_val.isnumeric():
             print("This is not a number.")
             continue
-        rows = int(rows)
-        if rows < 1:
-            print("Number of rows must be at least 1.")
+        input_val = int(input_val)
+        for check, message in config.constraints:
+            if not check(input_val):
+                print(message)
+                break
         else:
-            return rows
+            return input_val
 
 
-def get_columns_input():
-    while True:
-        columns = input("Enter number of columns: ")
-        if not columns.isnumeric():
-            print("This is not a number.")
-            continue
-        columns = int(columns)
-        if columns < 1:
-            print("Number of columns must be at least 1.")
-        else:
-            return columns
+class Config:
 
-
-def get_mines_input(rows, columns):
-    while True:
-        mines = input("Enter number of mines: ")
-        if not mines.isnumeric():
-            print("This is not a number.")
-            continue
-        mines = int(mines)
-        if mines > rows * columns:
-            # TODO has to work for ANY positive integer parameters?
-            print("Too many mines! They don't even fit into the field!")
-        else:
-            return mines
+    def __init__(self, name, constraints):
+        """
+        name is the name of the input
+        constraints is a list of two-tuples:
+            - if the validation (first element of the tuple) does not pass
+            - a message (second element of the tuple) is printed
+        """
+        self.name = name
+        self.constraints = constraints
 
 
 def get_user_input():
-    rows = get_rows_input()
-    columns = get_columns_input()
-    mines = get_mines_input(rows, columns)
+    rows = get_input(Config("rows", [(lambda x: x >= 1, "Number of rows must be at least 1.")]))
+    # could add for example: (lambda x: x % 2 == 0, "Number of columns must be even.")
+    columns = get_input(Config("columns", [(lambda x: x >= 1,
+                                            "Number of columns must be at least 1.")]))
+    mines = get_input(
+        Config("mines", [(lambda x: x <= rows * columns, "Too many mines! They don't even fit into the field!")]))
     return rows, columns, mines
 
 
